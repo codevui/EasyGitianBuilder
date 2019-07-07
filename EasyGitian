@@ -16,7 +16,7 @@ fi
 #if [ "${EASYGITIAN_OS}" = "Darwin" ] ; then
 if [ "${HOSTOS}" = "darwin" ] ; then
     echo "Checking for VT-x Virtualization Capabilities in your CPU..."
-    sysctl -a | grep machdep.cpu.features|grep -i vmx > /dev/null 2>&1 || { echo "VirtualBox requires VT-x Virtualization capabilities. Exiting..." ; exit 1; }
+    #sysctl -a | grep machdep.cpu.features|grep -i vmx > /dev/null 2>&1 || { echo "VirtualBox requires VT-x Virtualization capabilities. Exiting..." ; exit 1; }
     echo "Virtualization capabilities found"
     num_procs=$(sysctl -n hw.physicalcpu)
     echo "Checking number of Physical CPU cores... $num_procs"
@@ -27,7 +27,7 @@ elif [ "${HOSTOS}" = "linux" ] ; then
    grep lm /proc/cpuinfo > /dev/null 2>&1 || { echo "64 bit CPU required. Exiting..." ; exit 1; }
    echo "64bit CPU found"
    echo "Checking for VT-x Virtualization Capabilities in your CPU..."
-   grep vmx /proc/cpuinfo > /dev/null 2>&1 || { echo "VirtualBox requires VT-x Virtualization capabilities. Exiting..." ; exit 1; }
+   #grep vmx /proc/cpuinfo > /dev/null 2>&1 || { echo "VirtualBox requires VT-x Virtualization capabilities. Exiting..." ; exit 1; }
    echo "Virtualization capabilities found"
    num_procs=$(grep -c processor /proc/cpuinfo)
    echo "Checking number of Physical CPU cores... $num_procs"
