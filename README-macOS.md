@@ -8,7 +8,7 @@ any version of macOS supported by Vagrant and Virtualbox
 Get a copy of Install_EasyGitian.sh and mark it executable
 
  ```
- curl -O https://raw.githubusercontent.com/mazaclub/master/Install_EasyGitian.sh
+ curl -O https://raw.githubusercontent.com/codevui/master/Install_EasyGitian.sh
  chmod +x Install_EasyGitian.sh
  source ~/EasyGitian.env ## should put you n the easygitianbuilder directory)
  ./EasyGitian

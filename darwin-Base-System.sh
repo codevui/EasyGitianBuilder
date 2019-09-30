@@ -89,7 +89,7 @@ else
    test -f ./.vagrant_installed && echo "Vagrant seems installed"
    echo " " 
    echo "If both Virtualbox and Vagrant seem installed, and you still see this message"
-   echo "Please report an issue on https://github.com/mazaclub/EasyGitianBuilder"
+   echo "Please report an issue on https://github.com/codevui/EasyGitianBuilder"
    echo " " 
    echo "You may attempt to install ${1} on your own and run EasyGitian later" 
    exit 99

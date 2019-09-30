@@ -15,7 +15,7 @@
       in your home directory in ubuntu should be a copy of ```Install_EasyGitian.sh```
       
       If you already have WSL, you should be able to run 
-        ```wget -O "${HOME}/Install_EasyGitian.sh" https://raw.githubusercontent/mazaclub/easygitianbuilder/Install_EasyGitian.sh```
+        ```wget -O "${HOME}/Install_EasyGitian.sh" https://raw.githubusercontent/codevui/easygitianbuilder/Install_EasyGitian.sh```
 
    1. Run that to get EasyGitian setup and ready to install everything you need
    2. In your home directory now should be ```EasyGitian.env``` get started by running 
