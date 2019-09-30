@@ -7,7 +7,7 @@ test -z $1 || export DEBUG=true
 ## EasyGitian Installer
 ## 
 ## installs git, clones repo
-EASYGITIAN_BRANCH=v0.1.0
+EASYGITIAN_BRANCH=v0.2.0
 
 
 
