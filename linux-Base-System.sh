@@ -41,14 +41,14 @@ else
 fi
 
 get_vagrant () {
-vagrant_version=2.1.4
+vagrant_version=2.2.5
 
 # Get files 
 #wget -N https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.deb
-wget -N https://releases.hashicorp.com/vagrant/2.1.4/vagrant_2.1.4_x86_64.deb
+wget -N https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb
 #wget -N https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_SHA256SUMS
-wget -N https://releases.hashicorp.com/vagrant/2.1.4/vagrant_2.1.4_SHA256SUMS
-wget -N https://releases.hashicorp.com/vagrant/2.1.4/vagrant_2.1.4_SHA256SUMS.sig
+wget -N https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_SHA256SUMS
+wget -N https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_SHA256SUMS.sig
 #wget -N https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_SHA256SUMS.sig
 
 
@@ -58,20 +58,20 @@ gpg --import hashicorp.asc \
   || exit 9
 gpg --verify vagrant_${vagrant_version}_SHA256SUMS.sig vagrant_${vagrant_version}_SHA256SUMS || exit 8
 #gpg --verify vagrant_2.0.0_SHA256SUMS.sig vagrant_2.0.0_SHA256SUMS || exit 8
-gpg --verify vagrant_2.1.4_SHA256SUMS.sig vagrant_2.1.4_SHA256SUMS || exit 8
+gpg --verify vagrant_2.2.5_SHA256SUMS.sig vagrant_2.2.5_SHA256SUMS || exit 8
 
 # Verify shasum for download
 # fix to verify all downloaded versions
 #grep vagrant_2.0.0_x86_64.deb vagrant_2.0.0_SHA256SUMS | shasum -c || exit 7
-grep vagrant_2.1.4_x86_64.deb vagrant_2.1.4_SHA256SUMS | shasum -c || exit 7
+grep vagrant_2.2.5_x86_64.deb vagrant_2.2.5_SHA256SUMS | shasum -c || exit 7
 
 # install debian package
 ## TODO this is probably not good
 ########sudo dpkg -i vagrant_2.0.0_x86_64.deb
-which vagrant || { echo "==>> sudo dpkg -i vagrant_2.1.4_x86_64.deb"; sudo dpkg -i vagrant_2.1.4_x86_64.deb; }
+which vagrant || { echo "==>> sudo dpkg -i vagrant_2.2.5_x86_64.deb"; sudo dpkg -i vagrant_2.2.5_x86_64.deb; }
 if [ "${reinstall}" = "true" ] ; then
-   echo "==>> sudo dpkg -i vagrant_2.1.4_x86_64.deb" 
-   sudo dpkg -i vagrant_2.1.4_x86_64.deb && reinst_vagrant=true
+   echo "==>> sudo dpkg -i vagrant_2.2.5_x86_64.deb"
+   sudo dpkg -i vagrant_2.2.5_x86_64.deb && reinst_vagrant=true
 fi
 test -z ${DEBUG} || read -n 1 -s -r -p "Press any key to continue"
 #if [ "$(uname -a |awk '{print $3}' | awk -F\- '{print $NF}')" = "Microsoft" ] ; then
@@ -81,9 +81,9 @@ test -z ${DEBUG} || read -n 1 -s -r -p "Press any key to continue"
 #    read -n 1 -s -r -p "Press any key to continue"
 #fi
 if [ "${EASYGITIAN_WSL}" = "true" ] ; then
-    wget -N https://releases.hashicorp.com/vagrant/2.1.4/vagrant_2.1.4_x86_64.msi
-    grep vagrant_2.1.4_x86_64.msi vagrant_2.1.4_SHA256SUMS | shasum -c || exit 7
-    /mnt/c/Windows/System32/msiexec.exe /i vagrant_2.1.4_x86_64.msi /norestart
+    wget -N https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.msi
+    grep vagrant_2.2.5_x86_64.msi vagrant_2.2.5_SHA256SUMS | shasum -c || exit 7
+    /mnt/c/Windows/System32/msiexec.exe /i vagrant_2.2.5_x86_64.msi /norestart
     test -f /mnt/c/HashiCorp/Vagrant/bin/vagrant.exe || get_vagrant
 fi
 
@@ -121,14 +121,14 @@ get_vbox () {
 if [ "${EASYGITIAN_WSL}" = "true" ] ; then
    VBOXMANAGE="/mnt/c/Program Files/Oracle/VirtualBox/VBoxManage.exe"
    printf "\\nWSL in use\\nInstalling VirtualBox for Windows\\n"
-   vbox_shortver="5.2.18"
-   vbox_version="5.2.18-124319"
-   vbox_installer=VirtualBox-5.2.18-124319-Win.exe
+   vbox_shortver="6.0.8"
+   vbox_version="6.0.8-130520"
+   vbox_installer=VirtualBox-6.0.8-130520-Win.exe
    vboxwin_sha=2607f510bcb5dca11a189ca769bbd28e0ff3ff1d082762c03f062b406c8763f3 
-   wget -N https://download.virtualbox.org/virtualbox/${vbox_shortver}/VirtualBox-5.2.18-124319-Win.exe \
+   wget -N https://download.virtualbox.org/virtualbox/${vbox_shortver}/VirtualBox-6.0.8-130520-Win.exe \
     && wget -N http://download.virtualbox.org/virtualbox/${vbox_shortver}/Oracle_VM_VirtualBox_Extension_Pack-${vbox_version}.vbox-extpack \
     && wget -N -O vbox_${vbox_shortver}.SHA256SUMS https://www.virtualbox.org/download/hashes/${vbox_shortver}/SHA256SUMS \
-    && if [ "${vboxwin_sha}" = $(sha256sum VirtualBox-5.2.18-124319-Win.exe |awk '{print $1}') ] ; then
+    && if [ "${vboxwin_sha}" = $(sha256sum VirtualBox-6.0.8-130520-Win.exe |awk '{print $1}') ] ; then
           printf "\\nVirtualBox downloaded successfully...Installing..."
 	  ./${vbox_installer} || { echo "Error installing ${vbox_installer}" ; exit 1; } 
        else
@@ -158,8 +158,8 @@ elif [ "${OS}" = "Debian" ] ; then
 	   VBOXMANAGE=$(which VBoxManage)
           ;;
   stretch) echo "Installing virtualbox via contrib repository" 
-           vbox_version=5.2.18-124319
-           vbox_shortver=5.2.18
+           vbox_version=6.0.8-130520
+           vbox_shortver=6.0.8
 #sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian stretch contrib"
            echo "deb http://download.virtualbox.org/virtualbox/debian stretch contrib" >> ./stretch-virtualbox.list
            echo "Installing virtualbox with sudo privileges"

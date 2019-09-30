@@ -13,7 +13,7 @@ fi
 # Vagrant 
 get_vagrant () {
 # Get files 
-vagrant_version=2.1.4
+vagrant_version=2.2.5
 curl -O https://releases.hashicorp.com/vagrant/$vagrant_version/vagrant_${vagrant_version}_x86_64.dmg  -o vagrant_${vagrant_version}_x86_64.dmg
 curl -O https://releases.hashicorp.com/vagrant/${vagrant_version}/vagrant_${vagrant_version}_SHA256SUMS -o vagrant_${vagrant_version}_SHA256SUMS
 curl -O https://releases.hashicorp.com/vagrant/${vagrant_version}/vagrant_${vagrant_version}_SHA256SUMS.sig -o vagrant_${vagrant_version}_SHA256SUMS.sig
@@ -41,8 +41,8 @@ touch .vagrant_installed
 # Virtualbox
 get_vbox () {
 # Get files 
-vbox_version=5.2.18-124319
-vbox_shortver=5.2.18
+vbox_version=6.0.8-130520
+vbox_shortver=6.0.8
 curl -O http://download.virtualbox.org/virtualbox/${vbox_shortver}/VirtualBox-${vbox_version}-OSX.dmg
 curl -O http://download.virtualbox.org/virtualbox/${vbox_shortver}/Oracle_VM_VirtualBox_Extension_Pack-${vbox_version}.vbox-extpack
 curl -O https://www.virtualbox.org/download/hashes/${vbox_shortver}/SHA256SUMS 

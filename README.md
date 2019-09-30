@@ -188,7 +188,7 @@ build machines
 
  - Uses debian provided Vagrant base box, all modifications done at runtime
  - Uses modified gitian-build.sh from Bitcoin
- - Uses standard gitian-builder repo to build with an Ubuntu trusty-amd64 LXC vm
+ - Uses standard gitian-builder repo to build with an Ubuntu bionic-amd64 LXC vm
 
 
 ## OSX 
@@ -197,8 +197,8 @@ build machines
  installed, and download and help you to install them if needed. 
  
  Tested with:
- Vagrant 2.1.4
- VirtualBox 5.2.18
+ Vagrant 2.2.5
+ VirtualBox 6.0.8
 
  You'll then be given the opportunity to download Xcode from 
  the Apple Developers site, and produce the SDK tarball required to 
@@ -229,7 +229,7 @@ build machines
  On other debian based systems (including ubuntu for now) 
  an attempt is made to download the .deb file for your host system and install via dpkg 
 
- EasyGitian will attempt to install Vagrant 2.1.4 and Virtualbox 5.2.18 on Debian9
+ EasyGitian will attempt to install Vagrant 2.2.5 and Virtualbox 6.0.8 on Debian9
  Vagrant 2.0 and VirtualBox 5.1.28 will be installed on other debian based systems
 
 

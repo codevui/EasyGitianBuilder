@@ -133,8 +133,8 @@ Vagrant.configure("2") do |config|
    cd vm-builder-0.12.4+bzr494
    python setup.py install
    # xenial scripts are missing on the installed version of debootstrap
-   wget http://ftp.us.debian.org/debian/pool/main/d/debootstrap/debootstrap_1.0.91_all.deb
-   dpkg -i debootstrap_1.0.91_all.deb
+   wget http://archive.ubuntu.com/ubuntu/pool/main/d/debootstrap/debootstrap_1.0.95_all.deb
+   dpkg -i debootstrap_1.0.95_all.deb
 
    chown -R vagrant.vagrant /home/vagrant
    su - vagrant -c /host_vagrantdir/prep_gitian.sh

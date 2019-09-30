@@ -41,7 +41,7 @@ git clone "${SIGREPO}"
 
 SUITES="$(shyaml get-value suites <  "${REPODIR}"/contrib/gitian-descriptors/gitian-linux.yml|awk '{print $2}')"
 ARCHES="$(shyaml get-value architectures <  "${REPODIR}"/contrib/gitian-descriptors/gitian-linux.yml|awk '{print $2}')"
-suites="${SUITES:-trusty}"
+suites="${SUITES:-bionic}"
 arches="${ARCHES:-amd64}"
 
 for suite in $suites ; do
