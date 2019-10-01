@@ -35,8 +35,8 @@ git_clone () {
      echo "cloning EasyGitianBuilder" 
      git clone https://github.com/codevui/easygitianbuilder
      cd easygitianbuilder || exit 1
-     git checkout "${EASYGITIAN_BRANCH}" || exit 2
-     echo "LOCAL_DIR=$(pwd)" > local_dir.env
+#     git checkout "${EASYGITIAN_BRANCH}" || exit 2
+#     echo "LOCAL_DIR=$(pwd)" > local_dir.env
      test -z "$DEBUG" ||  read -n 1 -s -r -p "Press any key to continue"
   fi
 }
