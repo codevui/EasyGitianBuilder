@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
 # the checksums are embedded in the metadata of the box. 
 # The metadata itself is served over TLS and its format is validated.
   config.vm.box = "debian/contrib-jessie64"
-  config.vm.box_version = "8.5.0"
+  config.vm.box_version = "8.10.0"
   config.vm.hostname = "gitian-jessie"
   config.vm.post_up_message = "Run ./EasyGitian to start building or 'vagrant ssh' to login directly"
   # Disable automatic box update checking. If you disable this, then
