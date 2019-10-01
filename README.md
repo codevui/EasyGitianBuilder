@@ -198,7 +198,7 @@ build machines
  
  Tested with:
  Vagrant 2.2.5
- VirtualBox 6.0.8
+ VirtualBox 6.0.12
 
  You'll then be given the opportunity to download Xcode from 
  the Apple Developers site, and produce the SDK tarball required to 
@@ -229,8 +229,8 @@ build machines
  On other debian based systems (including ubuntu for now) 
  an attempt is made to download the .deb file for your host system and install via dpkg 
 
- EasyGitian will attempt to install Vagrant 2.2.5 and Virtualbox 6.0.8 on Debian9
- Vagrant 2.0 and VirtualBox 5.1.28 will be installed on other debian based systems
+ EasyGitian will attempt to install Vagrant 2.2.5 and Virtualbox 6.0.12 on Debian9
+ Vagrant 2.0 and VirtualBox 6.0.12 will be installed on other debian based systems
 
 
     

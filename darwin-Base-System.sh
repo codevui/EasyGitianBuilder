@@ -41,8 +41,8 @@ touch .vagrant_installed
 # Virtualbox
 get_vbox () {
 # Get files 
-vbox_version=6.0.8-130520
-vbox_shortver=6.0.8
+vbox_version=6.0.12-133076
+vbox_shortver=6.0.12
 curl -O http://download.virtualbox.org/virtualbox/${vbox_shortver}/VirtualBox-${vbox_version}-OSX.dmg
 curl -O http://download.virtualbox.org/virtualbox/${vbox_shortver}/Oracle_VM_VirtualBox_Extension_Pack-${vbox_version}.vbox-extpack
 curl -O https://www.virtualbox.org/download/hashes/${vbox_shortver}/SHA256SUMS 

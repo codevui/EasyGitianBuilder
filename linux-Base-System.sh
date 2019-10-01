@@ -121,14 +121,14 @@ get_vbox () {
 if [ "${EASYGITIAN_WSL}" = "true" ] ; then
    VBOXMANAGE="/mnt/c/Program Files/Oracle/VirtualBox/VBoxManage.exe"
    printf "\\nWSL in use\\nInstalling VirtualBox for Windows\\n"
-   vbox_shortver="6.0.8"
-   vbox_version="6.0.8-130520"
-   vbox_installer=VirtualBox-6.0.8-130520-Win.exe
+   vbox_shortver="6.0.12"
+   vbox_version="6.0.12-133076"
+   vbox_installer=VirtualBox-6.0.12-133076-Win.exe
    vboxwin_sha=2607f510bcb5dca11a189ca769bbd28e0ff3ff1d082762c03f062b406c8763f3 
-   wget -N https://download.virtualbox.org/virtualbox/${vbox_shortver}/VirtualBox-6.0.8-130520-Win.exe \
+   wget -N https://download.virtualbox.org/virtualbox/${vbox_shortver}/VirtualBox-6.0.12-133076-Win.exe \
     && wget -N http://download.virtualbox.org/virtualbox/${vbox_shortver}/Oracle_VM_VirtualBox_Extension_Pack-${vbox_version}.vbox-extpack \
     && wget -N -O vbox_${vbox_shortver}.SHA256SUMS https://www.virtualbox.org/download/hashes/${vbox_shortver}/SHA256SUMS \
-    && if [ "${vboxwin_sha}" = $(sha256sum VirtualBox-6.0.8-130520-Win.exe |awk '{print $1}') ] ; then
+    && if [ "${vboxwin_sha}" = $(sha256sum VirtualBox-6.0.12-133076-Win.exe |awk '{print $1}') ] ; then
           printf "\\nVirtualBox downloaded successfully...Installing..."
 	  ./${vbox_installer} || { echo "Error installing ${vbox_installer}" ; exit 1; } 
        else
@@ -158,8 +158,8 @@ elif [ "${OS}" = "Debian" ] ; then
 	   VBOXMANAGE=$(which VBoxManage)
           ;;
   stretch) echo "Installing virtualbox via contrib repository" 
-           vbox_version=6.0.8-130520
-           vbox_shortver=6.0.8
+           vbox_version=6.0.12-133076
+           vbox_shortver=6.0.12
 #sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian stretch contrib"
            echo "deb http://download.virtualbox.org/virtualbox/debian stretch contrib" >> ./stretch-virtualbox.list
            echo "Installing virtualbox with sudo privileges"
@@ -187,15 +187,15 @@ else
   echo "Attempting to download Virtualbox from official web source and install via dpkg"
   echo "I detected your OS is ${OS} and version is ${osrelease} - you should have used apt"
     test -z ${DEBUG} || read -n 1 -s -r -p "Press any key to continue"
-  vbox_version=5.1.28-117968
-  vbox_shortver=5.1.28
-  wget -N http://download.virtualbox.org/virtualbox/5.1.28/virtualbox-5.1_5.1.28-117968~"${OS}~${osrelease}"_amd64.deb
-  wget -N http://download.virtualbox.org/virtualbox/5.1.28/Oracle_VM_VirtualBox_Extension_Pack-5.1.28-117968.vbox-extpack
-  wget -N -O vbox_5.1.28.SHA256SUMS  https://www.virtualbox.org/download/hashes/5.1.28/SHA256SUMS
+  vbox_version=6.0.12-133076
+  vbox_shortver=6.0.12
+  wget -N http://download.virtualbox.org/virtualbox/6.0.12/virtualbox-6.0_6.0.12-133076~"${OS}~${osrelease}"_amd64.deb
+  wget -N http://download.virtualbox.org/virtualbox/6.0.12/Oracle_VM_VirtualBox_Extension_Pack-6.0_6.0.12-133076.vbox-extpack
+  wget -N -O vbox_6.0.12.SHA256SUMS  https://www.virtualbox.org/download/hashes/6.0.12/SHA256SUMS
   # Verify shasum for download
-  grep virtualbox-5.1_5.1.28-117968~"${OS}~${osrelease}"_amd64.deb  vbox_5.1.28.SHA256SUMS | shasum -c || exit 6
-  grep "117968.vbox-extpack" vbox_5.1.28.SHA256SUMS | shasum -c || exit 5
-  sudo dpkg -i virtualbox-5.1_5.1.28-117968~"${OS}~${osrelease}"_amd64.deb
+  grep virtualbox-6.0_6.0.12-133076~"${OS}~${osrelease}"_amd64.deb  vbox_6.0.12.SHA256SUMS | shasum -c || exit 6
+  grep "133076.vbox-extpack" vbox_6.0.12.SHA256SUMS | shasum -c || exit 5
+  sudo dpkg -i virtualbox-6.0_6.0.12-133076~"${OS}~${osrelease}"_amd64.deb
   export VBOXMANAGE=$(which VBoxManage)
 fi
 which "$VBOXMANAGE"|| not_installed VBoxManage
