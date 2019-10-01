@@ -36,9 +36,9 @@ else
 fi
 
 echo "Running ${VBOXMANAGE} to install a second virtual disk"
-"$VBOXMANAGE" createhd --filename "${DIR}/Gitian-builder_jessie.vdi" --size 75000 --format VDI --variant Standard
+"$VBOXMANAGE" createmedium --filename "${DIR}/Gitian-builder_jessie.vmdk" --size 75000 --format VDI --variant Standard
 echo "Attaching the new virtual disk to Gitian-builder_jessie VM"
-"$VBOXMANAGE" storageattach "Gitian-builder_jessie" --storagectl "SATA Controller" --port 1 --device 0 --type hdd --medium "${DIR}/Gitian-builder_jessie.vdi"
+"$VBOXMANAGE" storageattach "Gitian-builder_jessie" --storagectl "SATA Controller" --port 1 --device 0 --type hdd --medium "${DIR}/Gitian-builder_jessie.vmdk"
 
 echo "Virtual Disk added"
 # To add another disk, copy and modify this file, incrementing the "port 1" and choosing another file name 
