@@ -53,7 +53,6 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "./inputs", "/home/vagrant/gitian-builder/inputs"
   config.vm.synced_folder "./results", "/home/vagrant/gitian-results"
   config.vm.synced_folder "./repos", "/home/vagrant/repos"
-  
   config.vm.define "Gitian-builder_jessie"
 
   # Provider-specific configuration so you can fine-tune various
@@ -106,8 +105,19 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
    config.vm.provision "shell", inline: <<-SHELL
    apt-get update
-   apt-get install -y git ruby sudo apt-cacher-ng qemu-utils debootstrap lxc python-cheetah parted kpartx bridge-utils make ubuntu-archive-keyring curl lxc
+   apt-get install -y git ruby sudo apt-cacher-ng qemu-utils python-cheetah parted kpartx bridge-utils make ubuntu-archive-keyring curl autoconf automake pkg-config libcap-dev libtool
+   git clone https://github.com/lxc/lxc.git
+   cd lxc
+   git checkout lxc-3.0.1
+   ./autogen.sh
+    ./configure
+    sudo make install
+    cd ..
    #
+   # xenial scripts are missing on the installed version of debootstrap
+   wget http://archive.ubuntu.com/ubuntu/pool/main/d/debootstrap/debootstrap_1.0.95_all.deb
+   dpkg -i debootstrap_1.0.95_all.deb
+
    # the version of lxc-start in Debian needs to run as root, so make sure
    # that the build script can execute it without providing a password
    echo "%sudo ALL=NOPASSWD: /usr/bin/lxc-start" > /etc/sudoers.d/gitian-lxc
@@ -132,9 +142,6 @@ Vagrant.configure("2") do |config|
    tar -zxvf vm-builder_0.12.4+bzr494.orig.tar.gz
    cd vm-builder-0.12.4+bzr494
    python setup.py install
-   # xenial scripts are missing on the installed version of debootstrap
-   wget http://archive.ubuntu.com/ubuntu/pool/main/d/debootstrap/debootstrap_1.0.95_all.deb
-   dpkg -i debootstrap_1.0.95_all.deb
 
    chown -R vagrant.vagrant /home/vagrant
    su - vagrant -c /host_vagrantdir/prep_gitian.sh
