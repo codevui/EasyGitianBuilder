@@ -105,14 +105,14 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
    config.vm.provision "shell", inline: <<-SHELL
    apt-get update
-   apt-get install -y git ruby sudo apt-cacher-ng qemu-utils python-cheetah parted kpartx bridge-utils make ubuntu-archive-keyring curl autoconf automake pkg-config libcap-dev libtool
-   git clone https://github.com/lxc/lxc.git
-   cd lxc
-   git checkout lxc-3.0.1
-   ./autogen.sh
-    ./configure
-    sudo make install
-    cd ..
+   apt-get install -y git ruby sudo apt-cacher-ng qemu-utils python-cheetah parted kpartx bridge-utils make ubuntu-archive-keyring curl autoconf automake pkg-config libcap-dev libtool lxc
+#   git clone https://github.com/lxc/lxc.git
+#   cd lxc
+#   git checkout lxc-3.0.1
+#   ./autogen.sh
+#    ./configure
+#    sudo make install
+#    cd ..
    #
    # xenial scripts are missing on the installed version of debootstrap
    wget http://archive.ubuntu.com/ubuntu/pool/main/d/debootstrap/debootstrap_1.0.95_all.deb
