@@ -33,7 +33,7 @@ git_clone () {
      test -z "$DEBUG" || read -n 1 -s -r -p "Press any key to continue"
   else 
      echo "cloning EasyGitianBuilder" 
-     git clone https://github.com/codevui/easygitianbuilder
+     git clone https://github.com/mazaclub/easygitianbuilder
      cd easygitianbuilder || exit 1
 #     git checkout "${EASYGITIAN_BRANCH}" || exit 2
 #     echo "LOCAL_DIR=$(pwd)" > local_dir.env
